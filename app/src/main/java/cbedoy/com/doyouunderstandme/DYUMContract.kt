@@ -25,10 +25,10 @@ interface DYUMContract {
     }
 
     interface IDYUMService{
-        @GET("classify/")
+        @GET("classify")
         fun getClassify(@Query("text") text: String): Call<HashMap<String, Any>>
 
-        @GET("sentiment/")
+        @GET("sentiment")
         fun getSentiment(@Query("text") text: String?, @Query("mode") mode: String?): Call<HashMap<String, Any>>
     }
 
