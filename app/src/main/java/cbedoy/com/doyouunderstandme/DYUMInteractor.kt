@@ -16,7 +16,9 @@ class DYUMInteractor : DYUMContract.IDYUMInteractor{
     var service : DYUMContract.IDYUMService? = null
 
     override fun aylienPhase(phase: String) {
-        val call = service?.getConcepts(phase)
+
+        val mode = provider?.getTweetMode()
+        val call = service?.getSentiment(phase, mode)
         call?.enqueue(object : Callback<HashMap<String, Any>> {
             override fun onFailure(call: Call<HashMap<String, Any>>?, t: Throwable?) {
 

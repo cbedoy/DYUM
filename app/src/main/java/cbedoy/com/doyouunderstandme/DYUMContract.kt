@@ -2,6 +2,8 @@ package cbedoy.com.doyouunderstandme
 
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  * Doyouunderstandme
@@ -23,17 +25,16 @@ interface DYUMContract {
     }
 
     interface IDYUMService{
-        @GET("concepts")
-        fun getConcepts(text: String): Call<HashMap<String, Any>>
+        @GET("classify/")
+        fun getClassify(@Query("text") text: String): Call<HashMap<String, Any>>
 
+        @GET("sentiment/")
+        fun getSentiment(@Query("text") text: String?, @Query("mode") mode: String?): Call<HashMap<String, Any>>
     }
 
     interface IDYUMProvider {
-        fun extractSentiment(phase: String, callback: IDYUMProviderCallback)
-
-        interface IDYUMProviderCallback{
-            fun onSentiment(sentiment: Any)
-        }
+        fun getTweetMode(): String
+        fun getDocumentMode(): String
     }
 
 }

@@ -1,10 +1,7 @@
 package cbedoy.com.doyouunderstandme
 
-import android.app.Activity
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import java.io.IOException
+import cbedoy.com.doyouunderstandme.DYUMContract.IDYUMService
+import cbedoy.com.doyouunderstandme.ServiceGenerator.createService
 
 /**
  * Doyouunderstandme
@@ -14,6 +11,7 @@ import java.io.IOException
 class MainInjector{
     companion object {
         fun inject(activity: MainActivity){
+
             var presenter = DYUMPresenter()
             var interactor = DYUMInteractor()
             var provider = DYUMProvider()
@@ -22,6 +20,7 @@ class MainInjector{
             presenter.viewcontroller = activity
             interactor.presenter = presenter
             interactor.provider = provider
+            interactor.service = ServiceGenerator.createService(IDYUMService::class.java)
             activity.presenter = presenter
         }
     }

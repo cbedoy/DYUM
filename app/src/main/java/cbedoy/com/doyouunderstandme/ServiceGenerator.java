@@ -35,13 +35,12 @@ public class ServiceGenerator
         });
 
         OkHttpClient client = httpClient.build();
-        Retrofit retrofit = new Retrofit.Builder()
+
+        return new Retrofit.Builder()
                 .baseUrl(BuildConfig.URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
-
-        return retrofit;
     }
 
     public static <S> S createService(Class<S> serviceClass){

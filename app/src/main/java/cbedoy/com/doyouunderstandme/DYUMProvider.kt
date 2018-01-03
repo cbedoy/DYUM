@@ -1,7 +1,5 @@
 package cbedoy.com.doyouunderstandme
 
-import android.os.AsyncTask
-
 
 /**
  * Doyouunderstandme
@@ -10,17 +8,21 @@ import android.os.AsyncTask
  */
 class DYUMProvider : DYUMContract.IDYUMProvider
 {
-    override fun extractSentiment(phase: String, callback: DYUMContract.IDYUMProvider.IDYUMProviderCallback) {
-        val task = ExtractTask()
-        task.callback = callback
-        task.execute(phase)
+    var elements : ArrayList<String>? = null
+
+    init {
+        elements = ArrayList(2)
+        elements?.add("tweet")
+        elements?.add("document")
     }
 
-    class ExtractTask : AsyncTask<String, Void, Void>() {
-        override fun doInBackground(vararg p0: String?): Void {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        }
 
-        var callback : DYUMContract.IDYUMProvider.IDYUMProviderCallback? = null
+    override fun getDocumentMode(): String {
+        return elements!![1]
     }
+
+    override fun getTweetMode(): String {
+        return elements!![0]
+    }
+
 }
