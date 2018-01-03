@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,26 +9,31 @@
     <EditText
         android:id="@+id/phase_input_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Put your depressed phase here..."
+        android:layout_height="match_parent"
+        android:layout_above="@+id/phase_submit_view"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:hint="@string/put_your_depressed_phase_here"
         android:textColor="@color/secondary"
         android:textColorHint="@color/hint"
         android:textSize="28sp"
-        android:gravity="center"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="16dp" />
 
     <Button
-        android:text="Submit"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:background="@color/colorAccent"
         android:id="@+id/phase_submit_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorAccent"
+        android:text="Submit"
+        android:layout_margin="16dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="447dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="447dp" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

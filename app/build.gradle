@@ -27,6 +27,7 @@ android {
         debug{
             it.buildConfigField 'String', 'APP_ID', '"1773129b"'
             it.buildConfigField 'String', 'APP_KEY', '"8a259687c86801f4002e5e047c84cb15"'
+            it.buildConfigField 'String', 'URL', '"https://api.aylien.com/api/v1/"'
         }
     }
 }
@@ -40,5 +41,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    implementation 'com.aylien.textapi:client:0.6.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
 }

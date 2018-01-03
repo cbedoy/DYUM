@@ -1,6 +1,8 @@
 package cbedoy.com.doyouunderstandme
 
-import com.aylien.textapi.responses.Sentiment
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * Doyouunderstandme
@@ -11,15 +13,26 @@ class DYUMInteractor : DYUMContract.IDYUMInteractor{
 
     var presenter : DYUMContract.IDYUMPresenter? = null
     var provider : DYUMContract.IDYUMProvider? = null
+    var service : DYUMContract.IDYUMService? = null
 
     override fun aylienPhase(phase: String) {
-        provider?.extractSentiment(phase, callback = object: DYUMContract.IDYUMProvider.IDYUMProviderCallback{
-            override fun onSentiment(sentiment: Sentiment) {
-                val polarity = sentiment.polarity
-                val polarityConfidence = sentiment.polarityConfidence
-                val subjectivity = sentiment.subjectivity
-                val text = sentiment.text
+        val call = service?.getConcepts(phase)
+        call?.enqueue(object : Callback<HashMap<String, Any>> {
+            override fun onFailure(call: Call<HashMap<String, Any>>?, t: Throwable?) {
+
+            }
+
+            override fun onResponse(call: Call<HashMap<String, Any>>?, response: Response<HashMap<String, Any>>?) {
+                prepareResponse(response)
             }
         })
+    }
+
+    private fun prepareResponse(response: Response<HashMap<String, Any>>?) {
+        if (response!!.isSuccessful){
+            val body = response.body()
+
+            presenter?.receivedResponse(body)
+        }
     }
 }

@@ -1,6 +1,10 @@
 package cbedoy.com.doyouunderstandme
 
 import android.app.Activity
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import java.io.IOException
 
 /**
  * Doyouunderstandme
@@ -21,4 +25,7 @@ class MainInjector{
             activity.presenter = presenter
         }
     }
+
+
+
 }
