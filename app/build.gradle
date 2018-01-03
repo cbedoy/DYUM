@@ -18,6 +18,15 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+
+            it.buildConfigField 'String', 'APP_ID', '"1773129b"'
+            it.buildConfigField 'String', 'APP_KEY', '"8a259687c86801f4002e5e047c84cb15"'
+        }
+
+        debug{
+            it.buildConfigField 'String', 'APP_ID', '"1773129b"'
+            it.buildConfigField 'String', 'APP_KEY', '"8a259687c86801f4002e5e047c84cb15"'
         }
     }
 }
@@ -30,4 +39,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    implementation 'com.aylien.textapi:client:0.6.0'
 }
